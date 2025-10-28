@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:5432/postgres_db
+    username: ${USERNAME}
+    password: ${PASS}
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+jwt:
+  secret: ${JWT}
+  access:
+    expiration: 300000
+  refresh:
+    expiration: 86400000
+
+server:
+  port: 443
+  ssl:
+    enabled: true
+    protocol: TLS
+    key-store-type: PKCS12
+    key-store: classpath:keystore.p12
+    key-store-password: ${KEY_STORE_PASSWORD}
+    enabled-protocols: TLSv1.2, TLSv1.3
+    key-alias: server
